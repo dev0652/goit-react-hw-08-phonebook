@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import * as ops from 'redux/contacts/operations';
-import * as r from 'redux/contacts/reducers';
+import * as rds from 'redux/contacts/reducers';
 
 // ################################################
 
@@ -33,13 +33,13 @@ const contactsSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(ops.fetchContacts.fulfilled, r.handleFetchFulfilled)
-      .addCase(ops.addContact.fulfilled, r.handleAddFulfilled)
-      .addCase(ops.deleteContact.fulfilled, r.handleDeleteFulfilled)
-      .addCase(ops.editContact.fulfilled, r.handleEditFulfilled)
-      .addMatcher(isFulfilled(...extraActions), r.handleFulfilled)
-      .addMatcher(isPending(...extraActions), r.handlePending)
-      .addMatcher(isRejected(...extraActions), r.handleRejected),
+      .addCase(ops.fetchContacts.fulfilled, rds.handleFetchFulfilled)
+      .addCase(ops.addContact.fulfilled, rds.handleAddFulfilled)
+      .addCase(ops.deleteContact.fulfilled, rds.handleDeleteFulfilled)
+      .addCase(ops.editContact.fulfilled, rds.handleEditFulfilled)
+      .addMatcher(isFulfilled(...extraActions), rds.handleFulfilled)
+      .addMatcher(isPending(...extraActions), rds.handlePending)
+      .addMatcher(isRejected(...extraActions), rds.handleRejected),
 });
 
 export const { setSelectedContactId } = contactsSlice.actions;
